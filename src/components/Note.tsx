@@ -1,7 +1,7 @@
-import { CategoryEnum, INoteFormData } from "../types";
+import { CategoryEnum, ICreateNotePayload } from "../types";
 
 interface IProps {
-  note: INoteFormData;
+  note: ICreateNotePayload;
 }
 
 const colorBasedOnCategory = (category: CategoryEnum) => {

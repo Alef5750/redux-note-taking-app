@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CategoryEnum, INoteFormData } from "../../types";
+import {
+  CategoryEnum,
+  ICreateNotePayload,
+  IUpdateNotePayload,
+} from "../../types";
 
 interface INotesState {
-  notes: INoteFormData[];
+  notes: ICreateNotePayload[];
   activeCategory: CategoryEnum | "all";
 }
 const initialState: INotesState = {
@@ -36,9 +40,16 @@ export const NotesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    createNote: (state, action: PayloadAction<INoteFormData>) => {
+    createNote: (state, action: PayloadAction<ICreateNotePayload>) => {
       const id = state.notes.length + 1;
       state.notes = [...state.notes, { id, ...action.payload }];
+    },
+    updateNote: (state, action: PayloadAction<IUpdateNotePayload>) => {
+      const { id, changes } = action.payload;
+      const noteToUpdate = state.notes.find((n) => n.id === id);
+      if (noteToUpdate) {
+        Object.assign(noteToUpdate, changes);
+      }
     },
   },
 });

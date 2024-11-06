@@ -4,12 +4,16 @@ export interface AuthContextType {
   logout: () => void;
 }
 
-export interface INoteFormData {
+export interface ICreateNotePayload {
   id?: number;
   title: string;
   content: string;
   category: CategoryEnum;
   createdAt: string;
+}
+export interface IUpdateNotePayload {
+  id: number;
+  changes: Partial<ICreateNotePayload>;
 }
 
 export enum CategoryEnum {
