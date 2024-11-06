@@ -54,5 +54,5 @@ export const NotesSlice = createSlice({
   },
 });
 
-export const { createNote } = NotesSlice.actions; // for the components
+export const { createNote, updateNote } = NotesSlice.actions; // for the components
 export default NotesSlice.reducer; // for the store

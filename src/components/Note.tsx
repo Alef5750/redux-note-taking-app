@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { CategoryEnum, ICreateNotePayload } from "../types";
 
 interface IProps {
@@ -21,8 +22,12 @@ const colorBasedOnCategory = (category: CategoryEnum) => {
 };
 
 export const Note = ({ note }: IProps) => {
+  const navigate = useNavigate();
+  const navigateToEdit = () => {
+    navigate(`${note.id}`);
+  };
   return (
-    <div style={colorBasedOnCategory(note.category)}>
+    <div onClick={navigateToEdit} style={colorBasedOnCategory(note.category)}>
       <h2>{note.title}</h2>
       <h3>ID: {note.id}</h3>
       <p>{note.content}</p>

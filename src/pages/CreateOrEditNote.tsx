@@ -21,7 +21,7 @@ export const CreateOrEditNote = () => {
   useEffect(() => {
     if (id) {
       const currentData = notes.find((n) => n.id === Number(id));
-      Object.assign(formData, currentData);
+      setFormData(currentData);
     }
   }, [id, notes, formData]);
 
