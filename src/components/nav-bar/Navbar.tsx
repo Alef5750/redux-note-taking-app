@@ -12,7 +12,7 @@ export const Navbar: FC = () => {
         Home
       </Link>{" "}
       |
-      <Link className={styles.link} to="/Notes">
+      <Link className={styles.link} to="/notes">
         Notes
       </Link>{" "}
       |

@@ -4,7 +4,8 @@ export interface AuthContextType {
   logout: () => void;
 }
 
-export interface IFormData {
+export interface INoteFormData {
+  id?: number;
   title: string;
   content: string;
   category: CategoryEnum;

@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { CategoryEnum, IFormData } from "../types";
+import { CategoryEnum, INoteFormData } from "../types";
+import { createNote } from "../store/features/notesSlice";
+import { useDispatch } from "react-redux";
 
-const initialFormData: IFormData = {
+const initialFormData: INoteFormData = {
   title: "",
   content: "",
   category: CategoryEnum.PERSONAL,
@@ -9,10 +11,11 @@ const initialFormData: IFormData = {
 };
 
 export const CreateOrEditNote = () => {
-  const [formData, setFormData] = useState<IFormData>(initialFormData);
+  const [formData, setFormData] = useState<INoteFormData>(initialFormData);
+  const dispatch = useDispatch();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(createNote(formData));
   };
 
   return (
