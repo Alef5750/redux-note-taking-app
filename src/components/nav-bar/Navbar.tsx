@@ -12,8 +12,8 @@ export const Navbar: FC = () => {
         Home
       </Link>{" "}
       |
-      <Link className={styles.link} to="/dashboard">
-        Dashboard
+      <Link className={styles.link} to="/Notes">
+        Notes
       </Link>{" "}
       |
       <Link className={styles.link} to="/profile">

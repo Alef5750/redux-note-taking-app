@@ -1,10 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/nav-bar/Navbar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import { Dashboard } from "./pages/Dashboard";
 import { Profile } from "./pages/Profile";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { Notes } from "./pages/Notes";
+import { CreateOrEditNote } from "./pages/CreateOrEditNote";
 
 export const Router = () => {
   return (
@@ -14,10 +15,10 @@ export const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/dashboard"
+          path="/notes"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <Notes />
             </ProtectedRoute>
           }
         />
@@ -26,6 +27,22 @@ export const Router = () => {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notes/new"
+          element={
+            <ProtectedRoute>
+              <CreateOrEditNote />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notes/:id"
+          element={
+            <ProtectedRoute>
+              <CreateOrEditNote />
             </ProtectedRoute>
           }
         />
