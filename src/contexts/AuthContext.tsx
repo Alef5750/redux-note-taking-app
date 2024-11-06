@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { createContext, ReactNode } from "react";
 import { AuthContextType } from "../types";
-import { AuthContext } from "../hooks/auth-hooks";
 
 interface AuthProviderProps {
   children: ReactNode;
 }
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = React.useState<boolean>(false);

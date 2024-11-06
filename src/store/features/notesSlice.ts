@@ -6,7 +6,29 @@ interface INotesState {
   activeCategory: CategoryEnum | "all";
 }
 const initialState: INotesState = {
-  notes: [],
+  notes: [
+    {
+      id: 1,
+      title: "Learn Redux Toolkit",
+      content: "listen to course and do assignments daily",
+      category: CategoryEnum.WORK,
+      createdAt: "1000009978786",
+    },
+    {
+      id: 2,
+      title: "Pack for America",
+      content: "clothing, toiletries, the works",
+      category: CategoryEnum.PERSONAL,
+      createdAt: "097676554",
+    },
+    {
+      id: 3,
+      title: "Buy sunglasses",
+      content: "on Sunday shopping trip in NJ",
+      category: CategoryEnum.SHOPPING,
+      createdAt: "1000009978786",
+    },
+  ],
   activeCategory: "all",
 };
 
