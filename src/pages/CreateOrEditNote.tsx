@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CategoryEnum, ICreateNotePayload } from "../types";
 import { createNote } from "../store/features/notesSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { RootState } from "../store/store";
 
 const initialFormData: ICreateNotePayload = {
   title: "",
@@ -14,8 +15,16 @@ const initialFormData: ICreateNotePayload = {
 export const CreateOrEditNote = () => {
   const [formData, setFormData] = useState<ICreateNotePayload>(initialFormData);
   const dispatch = useDispatch();
-  const params = useParams();
-  console.log(params);
+  const notes = useSelector((state: RootState) => state.notes.notes);
+
+  const { id } = useParams(); // check for id to know if in Edit mode
+  useEffect(() => {
+    if (id) {
+      const currentData = notes.find((n) => n.id === Number(id));
+      Object.assign(formData, currentData);
+    }
+  }, [id, notes, formData]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(createNote(formData));
