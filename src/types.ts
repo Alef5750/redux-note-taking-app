@@ -13,7 +13,7 @@ export interface ICreateNotePayload {
 }
 export interface IUpdateNotePayload {
   id: number | undefined;
-  changes: Partial<ICreateNotePayload>;
+  updatedFields: Partial<ICreateNotePayload>;
 }
 
 export enum CategoryEnum {

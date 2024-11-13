@@ -45,11 +45,10 @@ export const NotesSlice = createSlice({
       state.notes = [...state.notes, { id, ...action.payload }];
     },
     updateNote: (state, action: PayloadAction<IUpdateNotePayload>) => {
-      const { id, changes } = action.payload;
-      const noteToUpdate = state.notes.find((n) => n.id === id);
-      if (noteToUpdate) {
-        Object.assign(noteToUpdate, changes);
-      }
+      const { id, updatedFields } = action.payload;
+      state.notes = state.notes.map((note) =>
+        note.id === id ? { ...note, ...updatedFields } : note
+      );
     },
   },
 });
