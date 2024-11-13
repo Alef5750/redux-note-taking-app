@@ -5,14 +5,14 @@ export interface AuthContextType {
 }
 
 export interface ICreateNotePayload {
-  id?: number | undefined;
+  id?: number;
   title: string;
   content: string;
   category: CategoryEnum;
   createdAt: string;
 }
 export interface IUpdateNotePayload {
-  id: number | undefined;
+  id: number;
   updatedFields: Partial<ICreateNotePayload>;
 }
 

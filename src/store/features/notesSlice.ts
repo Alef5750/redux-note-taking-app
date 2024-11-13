@@ -50,8 +50,12 @@ export const NotesSlice = createSlice({
         note.id === id ? { ...note, ...updatedFields } : note
       );
     },
+    deleteNote: (state, action: PayloadAction<{ id: number }>) => {
+      const { id } = action.payload;
+      state.notes = state.notes.filter((note) => note.id !== id);
+    },
   },
 });
 
-export const { createNote, updateNote } = NotesSlice.actions; // for the components
+export const { createNote, updateNote, deleteNote } = NotesSlice.actions; // for the components
 export default NotesSlice.reducer; // for the store

@@ -3,6 +3,7 @@ import { CategoryEnum, ICreateNotePayload } from "../types";
 
 interface IProps {
   note: ICreateNotePayload;
+  handleDelete: (id: number | undefined) => void;
 }
 
 const colorBasedOnCategory = (category: CategoryEnum) => {
@@ -21,7 +22,7 @@ const colorBasedOnCategory = (category: CategoryEnum) => {
   return styleObj;
 };
 
-export const Note = ({ note }: IProps) => {
+export const Note = ({ note, handleDelete }: IProps) => {
   const navigate = useNavigate();
   const navigateToEdit = () => {
     navigate(`${note.id}`);
@@ -32,6 +33,7 @@ export const Note = ({ note }: IProps) => {
       <h3>ID: {note.id}</h3>
       <p>{note.content}</p>
       <p>CATEGORY: {note.category}</p>
+      <button onClick={() => handleDelete(note.id)}>X</button>
     </div>
   );
 };
